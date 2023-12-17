@@ -1,0 +1,16 @@
+version: "3.8"
+
+services:
+  mc:
+    image: docker.io/itzg/minecraft-server:java21-alpine
+    tty: true
+    stdin_open: true
+    ports:
+      - "25565:25565"
+    environment:
+      EULA: "TRUE"
+      VERSION: "1.20.1"
+      TYPE: "FABRIC"
+      USE_SIMD_FLAGS: "true"
+    volumes:
+      - ./data:/data

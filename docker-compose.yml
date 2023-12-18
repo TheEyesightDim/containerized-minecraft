@@ -12,5 +12,6 @@ services:
       VERSION: "1.20.1"
       TYPE: "FABRIC"
       USE_SIMD_FLAGS: "true"
+      # server.properties configuration
     volumes:
-      - ./data:/data
+      - ./data:/data:z

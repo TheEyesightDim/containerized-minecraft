@@ -2,7 +2,7 @@
 
 A container solution for a Fabric MC server with automated backups and mods.
 
-Based on itzg's (https://github.com/itzg/docker-minecraft-server)[docker-minecraft-server] and (https://github.com/itzg/docker-mc-backup)[docker-mc-backup] projects.
+Based on itzg's [docker-minecraft-server](https://github.com/itzg/docker-minecraft-server) and [docker-mc-backup](https://github.com/itzg/docker-mc-backup) projects.
 
 ## Directions (W.I.P.)
 

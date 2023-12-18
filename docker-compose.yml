@@ -6,9 +6,9 @@ services:
     deploy:
       resources:
         limits:
-          memory: 10G
+          memory: 6G
         reservations:
-          memory: 10G
+          memory: 6G
     tty: true
     stdin_open: true
     ports:

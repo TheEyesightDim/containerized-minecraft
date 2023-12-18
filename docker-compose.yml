@@ -3,6 +3,12 @@ version: "3.8"
 services:
   mc:
     image: docker.io/itzg/minecraft-server:java21-alpine
+    deploy:
+      resources:
+        limits:
+          memory: 10G
+        reservations:
+          memory: 10G
     tty: true
     stdin_open: true
     ports:

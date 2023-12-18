@@ -8,10 +8,49 @@ services:
     ports:
       - "25565:25565"
     environment:
+      # Server options
+      SERVER_NAME: "Ortho's MC Server"
       EULA: "TRUE"
       VERSION: "1.20.1"
       TYPE: "FABRIC"
-      USE_SIMD_FLAGS: "true"
-      # server.properties configuration
+      USE_SIMD_FLAGS: true
+      PVP: false
+      #MAX_WORLD_SIZE: 14144
+      VIEW_DISTANCE: 16
+      SIMULATION_DISTANCE: 10
+      ENABLE_COMMAND_BLOCK: true
+      # Operators and Whitelist
+      OPS: |
+        Anisohedra
+      EXISTING_OPS_FILE: "SYNCHRONIZE"
+      WHITELIST: |
+        Anisohedra
+      ENABLE_WHITELIST: true
+      EXISTING_WHITELIST_FILE: "SYNCHRONIZE"
+      # OS Options
+      TZ: America/New_York
+      MEMORY: "4G"
+      USE_AIKAR_FLAGS: true
+      ENABLE_ROLLING_LOGS: true
+      # Modrinth projects
+      MODRINTH_DOWNLOAD_DEPENDENCIES: "required"
+      MODRINTH_PROJECTS: |
+        fabric-api
+        lithium
+      # Additional server.properties configuration
     volumes:
-      - ./data:/data:z
+      - ./data:/data
+      - ./ops.txt:/extra/ops.txt:ro
+      - ./whitelist.txt:/extra/whitelist.txt:ro
+  backup-service:
+    image: docker.io/itzg/mc-backup:latest
+    depends_on:
+      mc:
+        condition: service_healthy
+    environment:
+      BACKUP_INTERVAL: "12h"
+      RCON_HOST: mc
+      INITIAL_DELAY: "6h"
+    volumes:
+      - ./data:/data
+      - ./backups:/backups
